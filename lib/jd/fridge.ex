@@ -2,7 +2,6 @@ defmodule JD.Fridge do
   require Record
 
   @fields for k <- [:name, :calories, :price, :group], do: {k, :_}
-
   Record.defrecord :food, @fields
 
   def init do
