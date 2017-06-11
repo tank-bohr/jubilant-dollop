@@ -1,0 +1,2 @@
+%{"beruang": {:git, "https://github.com/SputnikTeam/beruang.git", "ca22c6397b117d893414fc26495596957af34991", []},
+  "gproc": {:hex, :gproc, "0.6.1", "4579663e5677970758a05d8f65d13c3e9814ec707ad51d8dcef7294eda1a730c", [:rebar3], [], "hexpm"}}
