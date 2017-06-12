@@ -4,7 +4,7 @@ defmodule JD.Fridge do
   @fields [:name, :calories, :price, :group]
   @fields_with_defaults for k <- @fields, do: {k, :_}
 
-  Record.defrecord :food, @fields_with_defaults
+  Record.defrecordp :food, @fields_with_defaults
 
   def init do
     :ets.new(:fridge, [:named_table, :public, keypos: food(:name) + 1])
@@ -25,8 +25,7 @@ defmodule JD.Fridge do
     |> put_record
   end
 
-  def put_record(record) do
-    food(name: name, group: group) = record
+  def put_record(food(name: name, group: group) = record) do
     :ets.insert(:fridge, record)
     :ets.insert(:fridge_group_idx, {group, name})
   end
