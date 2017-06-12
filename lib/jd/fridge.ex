@@ -8,7 +8,7 @@ defmodule JD.Fridge do
 
   def init do
     :ets.new(:fridge, [:named_table, :public, keypos: food(:name) + 1])
-    :ets.new(:fridge_group_idx, [:named_table, :public, :bag, keypos: food(:group) + 1])
+    :ets.new(:fridge_group_idx, [:named_table, :public, :bag])
     :lists.foreach(&put_record/1, [
       food(name: :salmon,   calories: 88,  price: 4.00, group: :meat),
       food(name: :cereals,  calories: 178, price: 2.79, group: :bread),
@@ -19,15 +19,16 @@ defmodule JD.Fridge do
     ])
   end
 
-  def put(foods) do
-    foods
+  def put(food) do
+    food
     |> keywords2record
     |> put_record
   end
 
-  def put_record(food) do
-    :ets.insert(:fridge, food)
-    :ets.insert(:fridge_group_idx, food)
+  def put_record(record) do
+    food(name: name, group: group) = record
+    :ets.insert(:fridge, record)
+    :ets.insert(:fridge_group_idx, {group, name})
   end
 
   def get(name) do
@@ -41,6 +42,7 @@ defmodule JD.Fridge do
 
   def of_group(group) do
     :ets.lookup(:fridge_group_idx, group)
+    |> Enum.flat_map(fn {^group, name} -> :ets.lookup(:fridge, name) end)
     |> convert_records
   end
 
