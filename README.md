@@ -1,19 +1,5 @@
-# JD
+# ETS x Elixir
 
-**TODO: Add description**
+Code samples for moscow elixir meetup talk
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `jubilant_dollop` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [{:jubilant_dollop, "~> 0.1.0"}]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/jubilant_dollop](https://hexdocs.pm/jubilant_dollop).
-
+Slides are [here](https://docs.google.com/presentation/d/1fZQB6BqIzEMgTwWr0Ld-CxyE9uOKIg_jXFlTrxIex6U/edit?usp=sharing)
